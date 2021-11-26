@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: formaflix-web
+    environment:
+      - MVC_SERVER=192.168.139.1
+      - MVC_DB=formaflix-demo
+      - MVC_USER=formaflix-demo-1
+      - MVC_TOKEN=gRQvLcLi
+      - MVC_DEBUG=false
+    command: php -S 0.0.0.0:9000
+    volumes:
+      - .:/var/www/html/
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
